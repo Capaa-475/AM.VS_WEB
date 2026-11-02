@@ -6,13 +6,13 @@ Guía para Windows 11 y PowerShell. En esta fase se comprueba que la web local y
 
 - La web local puede arrancar y compilar con Vite.
 - `supabase/schema.sql` y `supabase/seed.sql` preparan tablas y algunos datos oficiales iniciales.
-- `src/lib/supabase.ts` crea el cliente si se configura `.env`, pero las páginas actuales siguen mostrando sus datos locales. Por tanto, configurar `.env` **no conecta todavía la web a las tablas** ni demuestra una lectura desde React.
+- Con `.env` configurado, la web lee desde Supabase los datos públicos de actuaciones, noticias publicadas, repertorio, álbumes, componentes visibles, patrocinadores activos, línea del tiempo y ajustes del sitio. Si las tablas no tienen filas, algunas secciones mostrarán sus estados vacíos.
 - El formulario de contacto sólo valida en el navegador; todavía no guarda solicitudes.
 - El inicio del panel usa un acceso local de demostración, no Supabase Auth. No introduzcas aquí una contraseña real.
-- No ejecutes todavía `supabase/policies.sql`: antes de usarlo hay que corregir y verificar sus políticas. En particular, el acceso a `profiles` puede producir recursión RLS y el alta pública de solicitudes necesita protección contra abuso.
+- No ejecutes todavía `supabase/policies.sql`: antes de usarlo hay que revisar sus políticas. En particular, el acceso a `profiles` puede producir recursión RLS y el alta pública de solicitudes necesita protección contra abuso.
 - El SQL disponible no configura Storage. Los buckets tampoco se crean por haber ejecutado `schema.sql`.
 
-Con estos pasos podrás probar la web y crear/consultar la base de datos desde Supabase. La prueba de conexión real entre la web y Supabase queda para la siguiente implementación.
+La lectura pública está implementada, pero no publiques el sitio hasta que RLS y los permisos estén revisados. La lectura correcta de una tabla no sustituye una auditoría de seguridad.
 
 ## 1. Comprobar el proyecto en tu ordenador
 
@@ -110,7 +110,7 @@ VITE_SUPABASE_URL=https://TU-PROJECT-REF.supabase.co
 VITE_SUPABASE_ANON_KEY=TU-CLAVE-PUBLICA
 ```
 
-Guarda y cierra el archivo. `.env` está excluido por `.gitignore`; no lo añadas manualmente a GitHub. Reiniciar Vite después de cambiar variables es necesario. **En el estado actual de la app, esto sólo prepara el cliente: no pruebes datos reales desde una página porque aún no hay páginas conectadas a él.**
+Guarda y cierra el archivo. `.env` está excluido por `.gitignore`; no lo añadas manualmente a GitHub. Reinicia Vite después de cambiar variables. Al abrir la web, las páginas públicas consultan Supabase; si falla la petición, se muestra un aviso y se conservan los datos locales de respaldo.
 
 ## 6. Crear el repositorio GitHub
 
@@ -161,18 +161,19 @@ git push
 
 ## 7. Primera prueba conjunta local + base de datos
 
-En esta fase la prueba conjunta consiste en:
+La prueba conjunta consiste en:
 
 1. Confirmar que `npm run build` finaliza correctamente.
 2. Confirmar que `npm run dev` sirve la web en localhost.
-3. Confirmar desde SQL Editor de Supabase que se crearon las tablas y que se leen los datos del seed.
-4. Confirmar que `.env` no se subió a GitHub.
+3. Confirmar desde SQL Editor que las tablas existen y que `seed.sql` insertó las filas esperadas.
+4. Abrir la web, revisar que carga los datos de las tablas y mirar la consola del navegador si aparece un error.
+5. Confirmar que `.env` no se subió a GitHub.
 
-Todavía no intentes validar Auth, CRUD desde el panel, formulario persistido, Storage ni permisos RLS desde la web: esas funciones requieren implementación y políticas corregidas. No introduzcas nombres, correos, fotografías ni otros datos de componentes sin autorización.
+Todavía no intentes validar Auth, CRUD desde el panel, formulario persistido ni Storage desde la web: esas funciones requieren implementación. No introduzcas nombres, correos, fotografías ni otros datos de componentes sin autorización.
 
 ## 8. Storage, autenticación y RLS: no activar todavía
 
-Cuando se implemente y valide la siguiente fase:
+Antes de una publicación abierta o de añadir datos privados:
 
 - Se crearán los buckets necesarios en **Storage** y se definirán sus políticas.
 - Se conectará el formulario a `contact_requests` con validación y una política de inserción segura.

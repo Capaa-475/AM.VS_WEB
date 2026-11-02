@@ -1,7 +1,26 @@
-import { FormEvent, useMemo, useState } from 'react';
+import { createContext, FormEvent, useContext, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
-import { adminUsers, events, galleryAlbums, historyText, members, news, quickFacts, repertoire, siteSettings, socialLinks, sponsors, timeline } from './data/siteData';
-import { isSupabaseConfigured } from './lib/supabase';
+import { adminUsers, events, galleryAlbums, historyText, members, news, repertoire, siteSettings, socialLinks, sponsors, timeline } from './data/siteData';
+import { fetchPublicData, isSupabaseConfigured, type PublicData } from './lib/supabase';
+
+const initialPublicData: PublicData = {
+  source: 'local',
+  siteSettings,
+  socialLinks,
+  events,
+  news,
+  repertoire,
+  galleryAlbums,
+  members,
+  sponsors,
+  timeline,
+};
+
+const PublicDataContext = createContext<PublicData>(initialPublicData);
+
+function usePublicData() {
+  return useContext(PublicDataContext);
+}
 
 const navItems = [
   { to: '/', label: 'Inicio' },
@@ -17,8 +36,34 @@ const navItems = [
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [publicData, setPublicData] = useState(initialPublicData);
+  const [connectionError, setConnectionError] = useState('');
+  const [isLoading, setIsLoading] = useState(isSupabaseConfigured);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    fetchPublicData()
+      .then((data) => {
+        if (isMounted) setPublicData(data);
+      })
+      .catch((error: unknown) => {
+        console.error('No se pudieron cargar los datos públicos:', error);
+        if (isMounted) {
+          setConnectionError(error instanceof Error ? error.message : 'Error desconocido al conectar con Supabase.');
+        }
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
+    <PublicDataContext.Provider value={publicData}>
     <div className="app-shell">
       <header className="site-header">
         <div className="container header-inner">
@@ -26,7 +71,7 @@ function App() {
             <img src="/escudoAM.png" alt="Escudo de la Agrupación Musical Virgen de la Soledad" className="brand-logo" />
             <div>
               <span className="brand-name">AM VS</span>
-              <small>{siteSettings.name}</small>
+              <small>{publicData.siteSettings.name}</small>
             </div>
           </Link>
 
@@ -56,6 +101,8 @@ function App() {
       </header>
 
       <main className="page-shell">
+        {isLoading ? <p className="connection-banner" role="status">Conectando con Supabase…</p> : null}
+        {connectionError ? <p className="connection-banner error-text" role="alert">{connectionError} Se mantienen los datos locales de respaldo.</p> : null}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/historia" element={<HistoryPage />} />
@@ -73,19 +120,19 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-grid">
           <div>
-            <h3>{siteSettings.siglas}</h3>
-            <p>{siteSettings.name}</p>
-            <p>{siteSettings.locality}</p>
+            <h3>{publicData.siteSettings.siglas}</h3>
+            <p>{publicData.siteSettings.name}</p>
+            <p>{publicData.siteSettings.locality}</p>
           </div>
           <div>
             <h4>Contacto</h4>
-            <p>{siteSettings.publicPhone}</p>
-            <p>{siteSettings.rehearsalAddress}</p>
+            <p>{publicData.siteSettings.publicPhone}</p>
+            <p>{publicData.siteSettings.rehearsalAddress}</p>
           </div>
           <div>
             <h4>Redes</h4>
             <ul className="footer-links">
-              {socialLinks.map((social) => (
+              {publicData.socialLinks.map((social) => (
                 <li key={social.label}>
                   <a href={social.url} target="_blank" rel="noreferrer">
                     {social.label}
@@ -97,10 +144,19 @@ function App() {
         </div>
       </footer>
     </div>
+    </PublicDataContext.Provider>
   );
 }
 
 function HomePage() {
+  const { siteSettings: settings, news: publishedNews } = usePublicData();
+  const facts = [
+    { label: 'Año de fundación', value: String(settings.foundationYear) },
+    { label: 'Director actual', value: settings.currentDirector },
+    { label: 'Localidad', value: 'Doña Mencía' },
+    { label: 'Valores', value: settings.values.join(', ') },
+  ];
+
   return (
     <>
       <section className="hero">
@@ -133,7 +189,7 @@ function HomePage() {
             <h2>Valores de la agrupación</h2>
           </div>
           <div className="card-grid three-col">
-            {siteSettings.values.map((value) => (
+            {settings.values.map((value) => (
               <article key={value} className="feature-card">
                 <div className="feature-icon">✦</div>
                 <h3>{value}</h3>
@@ -151,7 +207,7 @@ function HomePage() {
             <h2>Información oficial</h2>
           </div>
           <div className="stats-grid">
-            {quickFacts.map((fact) => (
+            {facts.map((fact) => (
               <div key={fact.label} className="stat-card">
                 <span>{fact.label}</span>
                 <strong>{fact.value}</strong>
@@ -186,11 +242,23 @@ function HomePage() {
         <div className="container">
           <div className="section-heading">
             <span className="eyebrow">Actualidad</span>
-            <h2>Próximamente</h2>
+            <h2>Últimas noticias</h2>
           </div>
-          <div className="empty-state">
-            <p>En este momento no hay noticias publicadas. El contenido informativo se incorporará desde el panel privado cuando sea necesario.</p>
-          </div>
+          {publishedNews.length === 0 ? (
+            <div className="empty-state">
+              <p>En este momento no hay noticias publicadas. El contenido informativo se incorporará desde el panel privado cuando sea necesario.</p>
+            </div>
+          ) : (
+            <div className="card-grid three-col">
+              {publishedNews.slice(0, 3).map((item) => (
+                <article key={item.id} className="feature-card">
+                  <span className="card-tag">{item.category}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.summary}</p>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>
@@ -198,6 +266,8 @@ function HomePage() {
 }
 
 function HistoryPage() {
+  const { timeline: historyTimeline } = usePublicData();
+
   return (
     <div className="container section-page">
       <PageHeader title="Historia" subtitle="Trayectoria y evolución de la Agrupación Musical Virgen de la Soledad" />
@@ -205,7 +275,7 @@ function HistoryPage() {
         <p>{historyText}</p>
       </div>
       <div className="timeline">
-        {timeline.map((item) => (
+        {historyTimeline.map((item) => (
           <article key={item.id} className="timeline-item">
             <span className="timeline-year">{item.year}</span>
             <div>
@@ -220,54 +290,70 @@ function HistoryPage() {
 }
 
 function RepertoirePage() {
+  const { repertoire: repertoireItems } = usePublicData();
+
   return (
     <div className="container section-page">
       <PageHeader title="Repertorio" subtitle="Composiciones y marchas de la agrupación" />
-      <div className="card-grid four-col">
-        {repertoire.map((item) => (
-          <article key={item.id} className="repertoire-card">
-            <span className="card-tag">{item.category}</span>
-            <h3>{item.title}</h3>
-            <p>{item.author}</p>
-            {item.description ? <small>{item.description}</small> : null}
-          </article>
-        ))}
-      </div>
+      {repertoireItems.length === 0 ? (
+        <div className="empty-state large">
+          <p>El repertorio se actualizará próximamente.</p>
+        </div>
+      ) : (
+        <div className="card-grid four-col">
+          {repertoireItems.map((item) => (
+            <article key={item.id} className="repertoire-card">
+              <span className="card-tag">{item.category}</span>
+              <h3>{item.title}</h3>
+              <p>{item.author}</p>
+              {item.description ? <small>{item.description}</small> : null}
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 function EventsPage() {
+  const { events: eventItems } = usePublicData();
   const orderedEvents = useMemo(
-    () => [...events].sort((a, b) => a.title.localeCompare(b.title)),
-    [],
+    () => [...eventItems].sort((a, b) => a.title.localeCompare(b.title)),
+    [eventItems],
   );
 
   return (
     <div className="container section-page">
       <PageHeader title="Actuaciones" subtitle="Listado gestionable por el administrador" />
-      <div className="card-grid two-col">
-        {orderedEvents.map((event) => (
-          <article key={event.id} className="event-card">
-            <div className="event-card-header">
-              <h3>{event.title}</h3>
-              <span className={`badge ${event.status}`}>{event.status}</span>
-            </div>
-            <p>{event.description}</p>
-            <ul className="event-meta">
-              <li>Tipo: {event.type}</li>
-              <li>Localidad: {event.location}</li>
-              <li>Fecha: {event.dateLabel}</li>
-            </ul>
-          </article>
-        ))}
-      </div>
+      {orderedEvents.length === 0 ? (
+        <div className="empty-state large">
+          <p>Próximamente se anunciarán nuevas actuaciones.</p>
+        </div>
+      ) : (
+        <div className="card-grid two-col">
+          {orderedEvents.map((event) => (
+            <article key={event.id} className="event-card">
+              <div className="event-card-header">
+                <h3>{event.title}</h3>
+                <span className={`badge ${event.status}`}>{event.status}</span>
+              </div>
+              <p>{event.description}</p>
+              <ul className="event-meta">
+                <li>Tipo: {event.type}</li>
+                <li>Localidad: {event.location}</li>
+                <li>Fecha: {event.dateLabel}</li>
+              </ul>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 function GalleryPage() {
-  const hasGallery = galleryAlbums.length > 0;
+  const { galleryAlbums: albums } = usePublicData();
+  const hasGallery = albums.length > 0;
 
   return (
     <div className="container section-page">
@@ -278,7 +364,7 @@ function GalleryPage() {
         </div>
       ) : (
         <div className="card-grid three-col">
-          {galleryAlbums.map((album) => (
+          {albums.map((album) => (
             <article key={album.id} className="gallery-card">
               <div className="gallery-cover" aria-label={`Imagen de ${album.title}`} />
               <div className="gallery-body">
@@ -295,7 +381,8 @@ function GalleryPage() {
 }
 
 function MembersPage() {
-  const hasMembers = members.length > 0;
+  const { members: visibleMembers } = usePublicData();
+  const hasMembers = visibleMembers.length > 0;
 
   return (
     <div className="container section-page">
@@ -306,7 +393,7 @@ function MembersPage() {
         </div>
       ) : (
         <div className="card-grid three-col">
-          {members.map((member) => (
+          {visibleMembers.map((member) => (
             <article key={member.id} className="member-card">
               <div className="member-avatar" aria-label={member.name} />
               <h3>{member.name}</h3>
@@ -321,7 +408,8 @@ function MembersPage() {
 }
 
 function SponsorsPage() {
-  const hasSponsors = sponsors.length > 0;
+  const { sponsors: activeSponsors } = usePublicData();
+  const hasSponsors = activeSponsors.length > 0;
 
   return (
     <div className="container section-page">
@@ -332,7 +420,7 @@ function SponsorsPage() {
         </div>
       ) : (
         <div className="card-grid two-col">
-          {sponsors.map((sponsor) => (
+          {activeSponsors.map((sponsor) => (
             <article key={sponsor.name} className="sponsor-card">
               <h3>{sponsor.name}</h3>
               <p>{sponsor.description}</p>
@@ -345,6 +433,7 @@ function SponsorsPage() {
 }
 
 function ContactPage() {
+  const { siteSettings: settings } = usePublicData();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
@@ -397,9 +486,9 @@ function ContactPage() {
       <div>
         <PageHeader title="Contratación y contacto" subtitle="Solicitudes profesionales para actuaciones y eventos" />
         <div className="info-box">
-          <p><strong>Teléfono público:</strong> {siteSettings.publicPhone}</p>
-          <p><strong>Local de ensayo:</strong> {siteSettings.rehearsalAddress}</p>
-          <p><strong>Ubicación:</strong> Doña Mencía, Córdoba</p>
+          <p><strong>Teléfono público:</strong> {settings.publicPhone}</p>
+          <p><strong>Local de ensayo:</strong> {settings.rehearsalAddress}</p>
+          <p><strong>Ubicación:</strong> {settings.locality}</p>
         </div>
       </div>
 
@@ -456,6 +545,7 @@ function ContactPage() {
 }
 
 function AdminPage() {
+  const publicData = usePublicData();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(() => localStorage.getItem('amvs-demo-auth') === 'true');
@@ -501,15 +591,15 @@ function AdminPage() {
       <div className="admin-summary">
         <div className="summary-card">
           <span>Noticias</span>
-          <strong>{news.length}</strong>
+          <strong>{publicData.news.length}</strong>
         </div>
         <div className="summary-card">
           <span>Actuaciones</span>
-          <strong>{events.length}</strong>
+          <strong>{publicData.events.length}</strong>
         </div>
         <div className="summary-card">
           <span>Repertorio</span>
-          <strong>{repertoire.length}</strong>
+          <strong>{publicData.repertoire.length}</strong>
         </div>
         <div className="summary-card">
           <span>Usuarios previstos</span>

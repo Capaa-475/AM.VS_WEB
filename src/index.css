@@ -145,6 +145,20 @@ textarea {
   padding-bottom: 3rem;
 }
 
+.connection-banner {
+  width: min(var(--container), calc(100% - 2rem));
+  margin: 1rem auto 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(201, 155, 61, 0.35);
+  border-radius: 12px;
+  background: rgba(201, 155, 61, 0.1);
+}
+
+.connection-banner.error-text {
+  border-color: rgba(158, 47, 47, 0.3);
+  background: rgba(158, 47, 47, 0.08);
+}
+
 .hero {
   padding: 4.5rem 0 2.25rem;
 }
