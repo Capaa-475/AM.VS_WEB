@@ -1,0 +1,779 @@
+PROYECTO: WEB OFICIAL DE LA AGRUPACIÓN MUSICAL VIRGEN DE LA SOLEDAD DE DOÑA MENCÍA
+Actúa como un equipo profesional formado por desarrolladores Full Stack, diseñadores UI/UX, especialistas en bases de datos, ciberseguridad y accesibilidad web.
+Tu misión es desarrollar desde cero una página web completa, moderna, profesional, responsive y funcional para la Agrupación Musical Virgen de la Soledad de Doña Mencía (AM VS).
+IMPORTANTE:
+No quiero una simple maqueta ni una landing page estática.
+Quiero una web real, con base de datos, autenticación, almacenamiento, panel de administración y contenido dinámico.
+Debes crear los archivos y escribir el código directamente en el proyecto de VS Code.
+No te limites a explicarme qué debería hacer: implementa todo lo que puedas y guíame paso a paso en lo que requiera mis cuentas o permisos.
+No inventes información sobre la agrupación.
+No elimines funcionalidades para simplificar el trabajo sin consultarme.
+Trabaja por fases, comprueba que cada fase funciona y corrige los errores antes de avanzar.
+No sustituyas funcionalidades reales por botones decorativos.
+
+1. INFORMACIÓN OFICIAL DE LA AGRUPACIÓN
+Nombre completo: Agrupación Musical Virgen de la Soledad de Doña Mencía.
+Siglas: AM VS.
+Localidad: Doña Mencía, Córdoba, Andalucía, España.
+Año de fundación: 2008.
+Director actual: Pedro López.
+Valores principales:
+Tradición.
+Juventud.
+Devoción.
+Local de ensayo:
+Cerca de C. el Jardinito, 13, 14860 Doña Mencía, Córdoba.
+Teléfono público de contacto:
++34 699 14 26 01.
+Redes sociales oficiales:
+Instagram: https://www.instagram.com/amvirgensoledad
+YouTube: https://youtube.com/@amvirgendelasoledaddonamencia
+Facebook: https://www.facebook.com/amvirgen.delasoledad
+TikTok: https://www.tiktok.com/@amvirgendelasoledad
+La agrupación es independiente.
+Historia
+Utiliza la siguiente información como base para redactar la sección de historia:
+A finales de la Semana Santa de 2008 surgió la idea de crear una agrupación musical a partir de la antigua banda de la Cofradía de Nuestra Señora de la Soledad y Esperanza de Doña Mencía.
+Durante mayo de 2008 se celebraron reuniones entre antiguos componentes de aquella banda y otras personas interesadas en formar parte del nuevo proyecto.
+La cofradía colaboró donando buena parte de los instrumentos y antiguos uniformes, entre ellos instrumentos de viento conocidos como gaitas. La nueva agrupación tomó el nombre de su titular.
+La compra de otros instrumentos se financió mediante aportaciones personales de colaboradores. El Ayuntamiento de Doña Mencía ayudó facilitando un espacio para los ensayos.
+En verano de 2008 se incorporó como director musical Manolo Luque, director de la A.M. Nuestro Padre Jesús de la Redención, de la Hermandad de la Estrella de Córdoba. Comenzaron las clases de solfeo y los primeros ensayos.
+En la Cuaresma posterior, la agrupación realizó sus primeras actuaciones con seis marchas. Participó en el I Certamen de Bandas Mencianas Maestro Pelayo y en actos relacionados con la titular de la cofradía.
+Su primera salida procesional tuvo lugar el Sábado de Gloria, acompañando a la cruz guía de la Cofradía de Nuestra Señora de la Soledad y Esperanza.
+Posteriormente se produjo un cambio de dirección musical, incorporándose Diego Écija Alba, de Cabra. Se renovaron instrumentos y repertorio, incluyendo cambios importantes en la formación musical.
+El 21 de febrero de 2010 tuvo lugar el padrinazgo por parte de la A.M. Nuestro Padre Jesús de los Afligidos, de Puente Genil.
+En 2010 participó en diferentes certámenes y actos musicales de la localidad, además de actuaciones en Cuevas de San Marcos y Doña Mencía.
+IMPORTANTE SOBRE LA HISTORIA:
+Redacta un texto elegante, ordenado y cronológico.
+No inventes fechas concretas que no estén proporcionadas.
+No presentes a antiguos directores como directores actuales.
+No presentes cifras históricas de componentes como cifras actuales.
+Si detectas contradicciones cronológicas en el texto de partida, evita afirmar lo que no se pueda asegurar.
+Deja el contenido editable desde el panel de administración.
+Repertorio conocido
+Obras propias conocidas:
+Suena la Soledad: marcha de paso ordinario compuesta por el director.
+Candela: composición realizada por el director para su hija.
+1. HIMNO NACIONAL DE ESPAÑA
+2. EN LA CENA DEL SEÑOR
+3. CAUTIVO ANTE PILATOS
+4. A LA GLORIA
+5. AVE MARÍA
+6. ENTRANDO EN JERUSALEN
+7. CONSUELO GITANO
+8. CANDELA
+9. COSTALERO
+10. CARIDAD DEL GUADALQUIVIR
+11. CERCA DE TI
+12. CALLEJUELA DE LA O
+13. BESO Y TRAICIÓN
+14. CHRISTUS VINCIT
+15. CANDELA
+16. ESPÉRANOS EN EL CIELO
+17. A LOS PIES DE SOR ANGELA
+18. COSTALEROS DEL AMOR
+20. REINA DE REYES
+21. MORENITA Y PEQUEÑITA
+22. NUESTRO SEÑOR
+23. LA ESPERANZA DE MARÍA
+24. MI AMARGURA
+25. LA SAETA
+26. ESTRELLA MENCIANA
+27. LA ORACIÓN EN EL HUERTO
+28. HIMNO VIRGEN DEL ROSARIO
+29. MADRE DE LOS CREYENTES
+30. ANIMA CHRISTI
+31. LA ESPERANZA DE MARÍA
+32. MI AMARGURA
+33. ESTRELLA, REINA DEL CIELO
+34. NUESTRO PADRE JESÚS DE LA VICTORIA
+35. AVE MARÍA
+36. ORACIÓN
+37. JUDERÍA SEVILLANA
+38. AL SEÑOR DEL RESCATE
+39. ORACIÓN REDENTORA
+40. PASAN LOS CAMPANILLEROS
+42. SEÑOR DE SAN ROMÁN
+43. PRESENTADO A SEVILLA
+44. SOLEDAD MENCIANA
+45. REINA DE REYES
+46. SUENA LA SOLEDAD
+47. SOLEDAD Y ESPERANZA
+48. VIRGEN DE LA HINIESTA
+49. REO DE MUERTE
+50. VIRGEN DE LA PAZ
+51. POR MI, CAUTIVO
+52. SUEÑOS DE LUNA GITANA
+53. JESÚS DEL PRENDIMIENTO
+54. TRAS DE TI, MI CAUTIVO
+55. ... Y CONTIGO HASTA EL CIELO
+56. Y AL TERCER DÍA
+57. VIRGEN DE LAS ANGUSTIAS
+58. PENITENTES DE SEVILLANA
+59. REDENCIÓN, PASIÓN Y AMARGURA
+60. REINA DE REYES
+61. EN VOS CONFÍO
+62. OH PECADOR
+
+63. TU DULCE ROSTRO CAUTIVO
+64. JUNTO A TI
+65. TU ERES VICTORIA
+Actuaciones conocidas
+La agrupación participa habitualmente en:
+Sábado de Gloria en Doña Mencía.
+Certámenes de Cuaresma.
+Concierto Maestro Pelayo.
+Procesiones de Semana Santa.
+Otros eventos y actuaciones que varían cada año.
+La actuación del Sábado de Gloria en Doña Mencía es una cita habitual.
+No inventes el calendario de actuaciones futuras. Debe poder gestionarse desde el panel privado.
+Uniformidad
+El uniforme actual está compuesto por:
+Chaqueta negra.
+Bordados dorados.
+Detalles verdes y dorados.
+Gorra blanca.
+Pantalón blanco para el Sábado de Gloria.
+Pantalón negro para las demás procesiones.
+La única diferencia indicada entre ambos uniformes es el color del pantalón.
+
+2. DISEÑO Y ESTILO VISUAL
+Quiero una web que transmita identidad cofrade, tradición, solemnidad y juventud, pero con un acabado tecnológico moderno.
+No utilices una plantilla genérica.
+Colores
+Paleta principal:
+Verde oscuro elegante.
+Dorado.
+Azul marino.
+Blanco roto.
+Negro o gris carbón para algunos fondos.
+Utiliza variables CSS para que toda la paleta se pueda modificar fácilmente.
+Identidad visual
+Tenemos:
+Un escudo bordado original de la agrupación.
+Una fotografía de los componentes con el uniforme actual.
+Respeta completamente el escudo original.
+NO:
+Redibujes el escudo.
+Cambies sus símbolos.
+Inventes otro logotipo.
+Deformes las imágenes.
+Sustituyas el escudo por un icono genérico.
+Prepara una carpeta para guardar los recursos originales:
+public/assets/
+Organiza los recursos por categorías:
+Logo.
+Fotografías.
+Uniformidad.
+Carteles.
+Fondos.
+Iconos.
+Si todavía no hay imágenes suficientes, utiliza espacios provisionales elegantes y claramente identificados. No descargues fotografías de otras agrupaciones para hacerlas pasar por nuestras imágenes.
+Diseño general
+Quiero:
+Navegación elegante.
+Menú responsive.
+Transiciones suaves.
+Animaciones discretas.
+Tarjetas con buen diseño.
+Tipografía elegante y legible.
+Separadores decorativos dorados.
+Buenas proporciones y espacios.
+Diseño adaptado a móviles, tablets y ordenadores.
+Evita:
+Exceso de animaciones.
+Colores demasiado llamativos.
+Efectos de cristal exagerados.
+Diseños infantiles.
+Textos gigantes sin sentido.
+Elementos que parezcan botones pero no funcionen.
+
+3. ESTRUCTURA COMPLETA DE LA WEB
+Crea las siguientes páginas o secciones:
+A. INICIO
+Debe ser una portada completa.
+Elementos:
+Cabecera con escudo y nombre.
+Menú de navegación.
+Imagen principal de la agrupación.
+Frase representativa: Tradición, Juventud y Devoción.
+Presentación breve.
+Próximas actuaciones.
+Últimas noticias.
+Acceso al repertorio.
+Acceso a la galería.
+Enlaces a redes sociales.
+Información de contacto.
+Pie de página completo.
+La portada debe mostrar automáticamente las próximas actuaciones y las últimas noticias guardadas en la base de datos.
+Si no existen actuaciones futuras, mostrar un mensaje elegante indicando que próximamente se anunciarán nuevas fechas.
+B. HISTORIA
+Página dedicada a la historia de la agrupación.
+Debe incluir:
+Introducción.
+Historia completa.
+Línea del tiempo.
+Fundación en 2008.
+Primeras actuaciones.
+Evolución musical.
+Padrinazgo de 2010.
+Evolución de la agrupación hasta la actualidad.
+La línea del tiempo debe poder ampliarse desde administración.
+No inventes acontecimientos recientes.
+C. REPERTORIO
+Una sección musical completa.
+Debe permitir:
+Consultar marchas.
+Buscar por nombre.
+Filtrar por tipo.
+Consultar autores.
+Ver descripciones.
+Escuchar audios cuando existan.
+Ver vídeos cuando existan.
+Categorías configurables:
+Marchas procesionales.
+Pasos ordinarios.
+Composiciones propias.
+Otros tipos.
+Cada obra tendrá:
+Nombre.
+Autor.
+Categoría.
+Año, si se conoce.
+Descripción.
+Archivo de audio opcional.
+Enlace a vídeo opcional.
+Imagen opcional.
+Todo debe poder gestionarse desde el panel privado.
+D. ACTUACIONES Y AGENDA
+Esta sección debe mostrar el calendario de actuaciones.
+Diseña:
+Vista de próximos eventos.
+Calendario mensual.
+Ficha individual de cada actuación.
+Fecha.
+Hora.
+Localidad.
+Lugar.
+Tipo de evento.
+Descripción.
+Cartel opcional.
+Estados:
+Próxima.
+Celebrada.
+Cancelada.
+Las actuaciones deben ordenarse automáticamente por fecha.
+Una actuación celebrada debe pasar a la sección de historial de actuaciones, sin perder sus datos.
+El administrador podrá crear, editar, cancelar y eliminar actuaciones.
+E. GALERÍA
+Diseña una galería moderna.
+Categorías:
+Semana Santa.
+Sábado de Gloria.
+Certámenes.
+Conciertos.
+Ensayos.
+Eventos especiales.
+Funciones:
+Álbumes.
+Fotografías.
+Vídeos.
+Títulos.
+Descripciones.
+Fecha.
+Categorías.
+Vista ampliada.
+Navegación entre fotografías.
+Las imágenes deben almacenarse en Supabase Storage.
+La galería también tendrá un apartado para publicaciones y enlaces de redes sociales.
+No intentes extraer automáticamente publicaciones de redes sociales si la plataforma no lo permite. Utiliza enlaces oficiales o integraciones autorizadas.
+F. COMPONENTES
+Página dedicada a los integrantes.
+Debe permitir:
+Mostrar componentes autorizados.
+Organizar por instrumentos o secciones.
+Mostrar fotografías individuales si están disponibles y existe autorización.
+Añadir nombre, instrumento y cargo cuando proceda.
+IMPORTANTE:
+No publiques teléfonos, correos privados, direcciones personales ni información privada de los integrantes.
+No inventes nombres ni cargos.
+Si no hay información suficiente, muestra una presentación general de los componentes y deja el listado preparado para completarlo posteriormente.
+G. NOTICIAS
+Sistema de noticias dinámico.
+Cada noticia debe tener:
+Título.
+Imagen de portada.
+Texto.
+Fecha de publicación.
+Categoría.
+Autor o responsable, si se desea mostrar.
+Estado: borrador o publicada.
+Funciones:
+Listado de noticias.
+Página individual.
+Noticias destacadas.
+Últimas noticias en inicio.
+H. PATROCINADORES
+Página de colaboradores y patrocinadores.
+Cada patrocinador tendrá:
+Nombre.
+Logotipo.
+Descripción.
+Enlace externo opcional.
+Orden de visualización.
+Estado activo/inactivo.
+No inventes patrocinadores ni logotipos.
+I. CONTRATACIONES Y CONTACTO
+Crear una página profesional para recibir solicitudes de contratación.
+Formulario:
+Nombre.
+Entidad o cofradía.
+Correo electrónico.
+Teléfono de contacto.
+Localidad.
+Fecha aproximada.
+Tipo de evento.
+Mensaje.
+El formulario debe validar los datos y mostrar confirmación al usuario.
+No debe exponer información privada de administración.
+Prepara un sistema seguro para almacenar las solicitudes en Supabase.
+No prometas que se ha enviado un correo si no existe un servicio de correo realmente conectado.
+Incluye:
+Teléfono público.
+Redes sociales.
+Ubicación del local de ensayo.
+Mapa o enlace a Google Maps.
+
+4. TECNOLOGÍA Y ARQUITECTURA
+Utiliza preferentemente:
+React.
+Vite.
+TypeScript.
+CSS modular o una arquitectura de estilos bien organizada.
+Supabase.
+PostgreSQL.
+Supabase Auth.
+Supabase Storage.
+GitHub.
+Cloudflare Pages.
+Utiliza versiones estables y compatibles.
+Antes de instalar dependencias, comprueba que no existan incompatibilidades.
+Evita dependencias innecesarias.
+La aplicación debe ser una SPA correctamente configurada para que las rutas funcionen al recargar la página.
+Organiza el código por componentes, páginas, servicios, hooks, tipos y utilidades.
+No pongas toda la aplicación en App.tsx.
+
+5. BASE DE DATOS SUPABASE
+Necesito una base de datos real.
+Diseña las tablas y relaciones necesarias.
+Como mínimo:
+profiles
+id.
+nombre.
+correo.
+rol.
+activo.
+created_at.
+events
+id.
+título.
+descripción.
+fecha.
+hora.
+localidad.
+lugar.
+tipo.
+estado.
+imagen.
+created_at.
+updated_at.
+news
+id.
+título.
+slug.
+resumen.
+contenido.
+imagen.
+categoría.
+estado.
+fecha_publicación.
+created_at.
+updated_at.
+repertoire
+id.
+título.
+autor.
+categoría.
+año.
+descripción.
+audio_url.
+video_url.
+imagen_url.
+created_at.
+updated_at.
+gallery_albums
+id.
+título.
+descripción.
+categoría.
+fecha.
+portada.
+created_at.
+gallery_items
+id.
+album_id.
+título.
+descripción.
+archivo_url.
+tipo.
+orden.
+created_at.
+members
+id.
+nombre.
+instrumento.
+sección.
+cargo.
+fotografía.
+visible.
+orden.
+sponsors
+id.
+nombre.
+descripción.
+logotipo.
+enlace.
+activo.
+orden.
+contact_requests
+id.
+nombre.
+entidad.
+email.
+teléfono.
+localidad.
+fecha_evento.
+tipo_evento.
+mensaje.
+estado.
+created_at.
+timeline
+id.
+año.
+fecha.
+título.
+descripción.
+imagen.
+orden.
+site_settings
+id.
+clave.
+valor.
+updated_at.
+Puedes crear tablas adicionales si son necesarias, pero documenta para qué sirven.
+Crea:
+Claves primarias.
+Relaciones.
+Índices.
+Restricciones.
+Valores por defecto.
+Timestamps.
+Políticas de seguridad.
+Entrega un archivo SQL completo en:
+supabase/schema.sql
+Y otro archivo con datos iniciales:
+supabase/seed.sql
+No introduzcas datos inventados.
+
+6. AUTENTICACIÓN Y SEGURIDAD
+Quiero un panel privado.
+La web pública no debe permitir que cualquiera cree una cuenta de administrador.
+La autenticación se realizará mediante Supabase Auth.
+Inicialmente, los administradores previstos son:
+Francis.
+Sara.
+Pedro.
+Sergio.
+No inventes sus correos ni contraseñas.
+Prepara el sistema para que cada persona tenga su propia cuenta.
+Roles recomendados:
+Superadministrador
+Acceso completo.
+Gestionar usuarios y permisos.
+Gestionar todos los contenidos.
+Modificar configuración.
+Administrador
+Gestionar noticias.
+Gestionar actuaciones.
+Gestionar repertorio.
+Gestionar galería.
+Gestionar componentes.
+Gestionar patrocinadores.
+Consultar solicitudes de contacto.
+Editor
+Crear y editar contenidos autorizados.
+No gestionar usuarios.
+No cambiar la configuración de seguridad.
+El sistema debe permitir asignar y modificar roles desde el panel autorizado.
+IMPORTANTE:
+Implementa Row Level Security (RLS) en todas las tablas.
+No confíes únicamente en ocultar botones en React.
+Las políticas de Supabase deben impedir operaciones no autorizadas.
+La clave service_role jamás debe aparecer en el frontend.
+No guardes contraseñas en tablas propias.
+No publiques datos privados.
+No habilites el registro público de administradores.
+Las cuentas se crearán mediante invitación o procedimiento controlado.
+Prepara:
+supabase/policies.sql
+Y explica cómo activar las políticas.
+
+7. PANEL DE ADMINISTRACIÓN
+Crear una ruta privada, por ejemplo:
+/admin
+Debe tener:
+Inicio del panel.
+Resumen de actividad.
+Gestión de noticias.
+Gestión de actuaciones.
+Gestión del repertorio.
+Gestión de álbumes y fotografías.
+Gestión de componentes.
+Gestión de patrocinadores.
+Gestión de solicitudes.
+Gestión de historia y línea del tiempo.
+Gestión de usuarios y roles.
+Configuración general.
+El panel debe tener un diseño diferente de la web pública, pero mantener la misma identidad visual.
+Funciones reales
+Cada módulo debe permitir:
+Crear.
+Leer.
+Editar.
+Eliminar.
+Buscar.
+Filtrar.
+Confirmar operaciones destructivas.
+Añade:
+Mensajes de éxito y error.
+Indicadores de carga.
+Validación de formularios.
+Confirmaciones antes de borrar.
+Tratamiento de errores de conexión.
+Los cambios deben guardarse en Supabase y reflejarse automáticamente en la web pública.
+No quiero tener que editar el código cada vez que se publique una noticia o se añada una actuación.
+
+8. ALMACENAMIENTO DE IMÁGENES Y ARCHIVOS
+Utiliza Supabase Storage.
+Prepara buckets separados cuando tenga sentido:
+gallery.
+news.
+repertoire.
+sponsors.
+members.
+assets.
+Implementa:
+Subida de archivos.
+Vista previa.
+Validación de formatos.
+Límite razonable de tamaño.
+Eliminación segura.
+Organización de archivos.
+Tratamiento de errores.
+Las imágenes públicas autorizadas podrán mostrarse en la web.
+Los archivos privados deben tener acceso restringido.
+No guardes imágenes codificadas en Base64 dentro de las tablas.
+Guarda las rutas o URLs de los archivos.
+
+9. DISEÑO RESPONSIVE Y ACCESIBILIDAD
+Comprueba la web en:
+Móvil.
+Tablet.
+Ordenador.
+Debe funcionar correctamente con distintos tamaños de pantalla.
+Incluye:
+Menú móvil.
+Navegación por teclado.
+Contrastes adecuados.
+Etiquetas accesibles.
+Textos alternativos en imágenes.
+Estados de foco.
+Formularios comprensibles.
+Carga optimizada de imágenes.
+Añade SEO básico:
+Títulos por página.
+Meta descriptions.
+Open Graph.
+Favicon.
+Sitemap.
+robots.txt.
+URLs amigables.
+Configura una página 404.
+
+10. VER LA WEB SIN CONTRATAR ALOJAMIENTO DEFINITIVO
+Necesito poder enseñar el proyecto antes de que la directiva decida dónde alojarlo.
+Prepara tres formas de visualizarlo.
+OPCIÓN A: EN MI PROPIO ORDENADOR
+Debe funcionar con:
+npm run dev
+Explícame cómo acceder desde el navegador mediante localhost.
+OPCIÓN B: ENSEÑARLA A PERSONAS QUE ESTÁN FUERA DE MI RED
+Investiga y prepara una opción de enlace temporal de demostración mediante un túnel seguro.
+Explica qué herramienta utilizar, cómo instalarla y cómo arrancarla.
+El enlace debe permitir ver la web desde fuera sin contratar un alojamiento permanente.
+IMPORTANTE:
+Diferencia claramente entre un enlace temporal y una web publicada.
+El enlace temporal puede dejar de funcionar al cerrar el túnel.
+No expongas innecesariamente el panel de administración.
+Para demostraciones externas utiliza datos ficticios de prueba y nunca credenciales reales.
+No expongas el servidor de desarrollo con información privada.
+No prometas que un enlace temporal será permanente.
+
+11. ALOJAMIENTO GRATUITO PROVISIONAL
+Mientras la directiva decide el alojamiento definitivo, quiero una alternativa gratuita.
+Prioridad: Cloudflare Pages conectado a GitHub.
+Objetivos:
+Despliegue automático al actualizar el repositorio.
+HTTPS.
+URL gratuita del proveedor.
+Posibilidad de usar posteriormente un dominio propio.
+Vistas previas de cambios.
+Sin límite artificial de commits en nuestro flujo de trabajo.
+IMPORTANTE:
+No confundas commits con compilaciones o despliegues.
+Comprueba los límites actuales del plan gratuito y documenta:
+Número de compilaciones mensuales.
+Límites de archivos.
+Límites de tamaño.
+Restricciones de funciones.
+Posibles límites de uso.
+Condiciones de las vistas previas.
+No afirmes que es ilimitado si existen cuotas.
+El alojamiento provisional no debe impedir migrar a otro proveedor en el futuro.
+La web debe poder desplegarse de nuevo sin reescribirla.
+
+12. CONFIGURACIÓN Y CONEXIÓN PASO A PASO
+Quiero que me guíes desde cero.
+No des por hecho que ya tengo configuradas las cuentas.
+Prepara una guía GUIA-INSTALACION.md que incluya:
+Programas necesarios en Windows 11.
+Instalación de Node.js.
+Comprobación de npm.
+Creación del proyecto React + Vite.
+Instalación de dependencias.
+Creación de una cuenta/proyecto Supabase.
+Creación de las tablas.
+Ejecución del SQL.
+Configuración de Storage.
+Configuración de autenticación.
+Creación de los primeros usuarios administradores.
+Configuración de variables de entorno.
+Arranque local.
+Pruebas de conexión.
+Creación del repositorio GitHub.
+Conexión con Cloudflare Pages.
+Despliegue provisional.
+Cómo actualizar la web.
+Cómo hacer copias de seguridad.
+Cómo cambiar posteriormente de alojamiento.
+Quiero instrucciones concretas, con rutas, nombres de botones y comandos.
+Cuando haya un paso que requiera que yo entre en una página externa, detente y dime exactamente qué tengo que hacer.
+No inventes claves, IDs ni URLs de proyectos.
+
+13. VARIABLES DE ENTORNO
+Prepara .env.example.
+Como mínimo:
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+Explica qué valores tengo que copiar desde Supabase.
+No incluyas secretos reales.
+Añade .env a .gitignore.
+Si alguna función necesita claves privadas, debe ejecutarse en un entorno seguro de servidor o Edge Function.
+Nunca pongas claves privadas en variables VITE_.
+
+14. CONTENIDO INICIAL Y ESTADOS VACÍOS
+Carga únicamente los datos que ya conocemos.
+Contenido inicial:
+Nombre oficial.
+Siglas.
+Año de fundación.
+Director actual: Pedro López.
+Valores.
+Dirección del local de ensayo.
+Teléfono público.
+Redes sociales.
+Historia facilitada.
+Las dos composiciones propias conocidas.
+Actuación habitual del Sábado de Gloria, sin inventar una fecha futura.
+Para las demás secciones, utiliza estados vacíos elegantes.
+Ejemplos:
+Próximamente se anunciarán nuevas actuaciones.
+El repertorio se actualizará próximamente.
+Estamos preparando nuevas publicaciones.
+No muestres contenido de ejemplo como si fuera información oficial.
+
+15. CALIDAD Y PRUEBAS
+Antes de dar el proyecto por terminado, realiza comprobaciones.
+Verifica:
+Que la aplicación arranca.
+Que no hay errores de TypeScript.
+Que no hay errores de consola.
+Que todas las rutas funcionan.
+Que el menú funciona.
+Que Supabase conecta.
+Que los datos se leen correctamente.
+Que los formularios validan.
+Que las operaciones CRUD funcionan.
+Que los permisos impiden accesos no autorizados.
+Que Storage permite subir y consultar archivos según los permisos.
+Que el panel no se puede abrir sin autenticación.
+Que funciona en móvil.
+Que el despliegue de producción compila correctamente.
+Crea un archivo CHECKLIST-PRUEBAS.md.
+No marques una prueba como completada si no la has ejecutado.
+
+16. ORGANIZACIÓN DEL TRABAJO
+Trabaja en este orden:
+FASE 1: Revisar el entorno, crear el proyecto y configurar la estructura.
+FASE 2: Crear el diseño general, navegación y páginas públicas.
+FASE 3: Diseñar la base de datos y preparar los archivos SQL.
+FASE 4: Conectar Supabase y comprobar la lectura de datos.
+FASE 5: Implementar autenticación, roles y políticas RLS.
+FASE 6: Crear el panel privado y sus módulos de gestión.
+FASE 7: Implementar Storage, galería y formularios.
+FASE 8: SEO, accesibilidad, responsive y optimización.
+FASE 9: Pruebas completas.
+FASE 10: Configurar GitHub y el despliegue gratuito provisional.
+No intentes completar todo de golpe si eso aumenta el riesgo de errores.
+Al finalizar cada fase:
+Explica qué has creado.
+Indica qué archivos has modificado.
+Ejecuta las comprobaciones posibles.
+Indica qué tengo que hacer yo.
+Espera mi confirmación cuando necesites credenciales, cuentas o decisiones externas.
+
+17. RESULTADO FINAL
+Quiero terminar con:
+Web pública completa.
+Diseño profesional e identificativo de AM VS.
+Base de datos Supabase conectada.
+Autenticación funcional.
+Panel privado de administración.
+Gestión de noticias.
+Gestión de actuaciones.
+Gestión del repertorio.
+Gestión de galería.
+Gestión de componentes.
+Gestión de patrocinadores.
+Formulario de contratación.
+Almacenamiento de archivos.
+Permisos seguros.
+Documentación de instalación.
+Documentación de base de datos.
+Documentación de administración.
+Web visible localmente.
+Método para compartir una demostración temporal.
+Despliegue gratuito provisional.
+EMPIEZA AHORA.
+Primero revisa el contenido de la carpeta abierta en VS Code y el estado del entorno. Si está vacía, crea el proyecto desde cero. Si hay archivos existentes, analiza qué hay antes de sobrescribir nada.
+No me entregues solamente un plan: empieza a desarrollar el proyecto y ve guiándome en los pasos que requieran mi intervención.

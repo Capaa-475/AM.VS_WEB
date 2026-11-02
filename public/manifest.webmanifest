@@ -1,0 +1,16 @@
+{
+  "name": "AM VS",
+  "short_name": "AMVS",
+  "description": "Agrupación Musical Virgen de la Soledad de Doña Mencía",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07271f",
+  "theme_color": "#d8b35a",
+  "icons": [
+    {
+      "src": "/escudoAM.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
